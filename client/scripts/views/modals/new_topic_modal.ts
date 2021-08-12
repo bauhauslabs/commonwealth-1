@@ -29,7 +29,9 @@ const NewTopicModal: m.Component<{
 }> = {
   view: (vnode) => {
     if (!app.user.isSiteAdmin && !app.user.isAdminOfEntity({ chain: app.activeChainId(), community: app.activeCommunityId() })) return null;
+
     const { id, name, description, featured_in_sidebar, featured_in_new_post } = vnode.attrs;
+
     if (!vnode.state.form) {
       vnode.state.form = { id, name, description, featured_in_sidebar, featured_in_new_post };
     }
