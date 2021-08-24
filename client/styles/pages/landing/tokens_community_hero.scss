@@ -30,6 +30,132 @@
     width: 100%;
   }
 }
+
+.TokenCTitle {
+  font-size: 40px;
+  @media (min-width: 559px) {
+    font-size: 50px;
+  }
+}
+.TokensCommunityContentContainer {
+  margin-top: 35%;
+  margin-left: 5%;
+  margin-right: 5%;
+  @media (min-width: 400px) {
+    margin-top: 25%;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
+  }
+  @media (min-width: 700px) {
+    margin-top: 18%;
+    margin-left: 4.7%;
+  }
+  @media (min-width: 740px) {
+    margin-top: 30%;
+    margin-left: 4.7%;
+  }
+  @media (min-width: 999px) {
+    margin-left: 7.4%;
+  }
+  @media (min-width: 1294px) {
+    margin-right: 10%;
+    margin-left: 15%;
+  }
+  @media (min-width: 1620px) {
+    width: 521px;
+    margin-right: 0px;
+    margin-top: 18%;
+    margin-bottom: 5%;
+  }
+}
+
+.TokenCommunityParagraph {
+  font-size: 20px;
+  line-height: 26px;
+  margin: 0px;
+  @media (min-width: 559px) {
+    font-size: 22px;
+  }
+  @media (min-width: 740px) and (max-width: 799px) {
+    margin-right: 18%;
+  }
+}
+
+.TokenCommunitySearch {
+  @media (min-width: 740px) {
+    margin-top: 10%;
+  }
+}
+
+.TokenCommunityGoButton {
+  display: block;
+  @media (min-width: 559px) {
+    display: none;
+  }
+}
+.TokenCommunityLetGoButton {
+  display: none;
+  @media (min-width: 559px) {
+    display: block;
+  }
+}
+
+.TokenChannelContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @media (min-width: 740px) {
+    align-items: start;
+  }
+  @media (min-width: 1294px) {
+    flex-direction: row;
+  }
+}
+
+.TokenChannelTitleContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  @media (min-width: 740px) {
+    justify-content: start;
+    align-items: center;
+  }
+  @media (min-width: 1294px) {
+    flex-direction: row;
+    margin-right: 10%;
+  }
+}
+
+.TokenChannelTitle {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
+  text-align: center;
+  color: #1c1c25;
+  @media (min-width: 559px) {
+    font-size: 36px;
+  }
+}
+
+.TokenChannelIconsContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 10%;
+  margin-top: 5%;
+  @media (min-width: 600px) {
+    margin-bottom: 5%;
+    margin-top: 3%;
+  }
+  @media (min-width: 740px) {
+    justify-content: start;
+  }
+  @media (min-width: 1294px) {
+    margin: 0;
+  }
+}
+
 .TokensCommunityRightContainer {
   width: 50%;
   position: relative;
@@ -74,6 +200,7 @@
     display: block;
     position: absolute;
     left: 37%;
+    top: 21%;
   }
 
   @media (min-width: 1000px) and (max-width: 1440px) {
@@ -83,10 +210,10 @@
 
 .TokenDiscussionDesktopContainer {
   display: none;
-  @media (min-width: 1441px) {
-    display: block;
-    width: 600px;
-  }
+  // @media (min-width: 1441px) {
+  //   display: block;
+  //   width: 600px;
+  // }
 }
 
 .TokenDiscussionContainer {
@@ -95,11 +222,26 @@
     display: none;
   }
 
-  @media (min-width: 1000px) and (max-width: 1440px) {
+  @media (min-width: 1000px) and (max-width: 1100px) {
     display: block;
     width: 442px;
     position: absolute;
+    top: 25%;
     right: 0;
+  }
+  @media (min-width: 1294px) and (max-width: 1440px) {
+    display: block;
+    width: 442px;
+    position: absolute;
+    top: 30%;
+    right: 0;
+  }
+  @media (min-width: 1441px) {
+    display: block;
+    width: 442px;
+    position: absolute;
+    left: 36%;
+    top: 26%;
   }
 }
 
@@ -123,15 +265,20 @@
     left: 6%;
   }
   @media (min-width: 740px) and (max-width: 999px) {
+    top: 47%;
     left: 8.5%;
   }
   @media (min-width: 1000px) and (max-width: 1100px) {
     left: 27px;
-    top: 48.5%;
+    top: 52.5%;
   }
   @media (min-width: 1100px) and (max-width: 1440px) {
     left: 70px;
-    top: 48.5%;
+    top: 57.5%;
+  }
+  @media (min-width: 1441px) {
+    top: 52%;
+    left: 10%;
   }
 }
 
@@ -169,27 +316,27 @@
     display: block;
     width: 240px;
     left: 22%;
-    top: 62.5%;
+    top: 69.5%;
   }
 
   @media (min-width: 767px) and (max-width: 999px) {
     display: block;
     width: 240px;
     left: 22%;
-    top: 60.5%;
+    top: 68.5%;
   }
 
   @media (min-width: 1000px) and (max-width: 1100px) {
     display: block;
     width: 240px;
-    top: 68%;
+    top: 74%;
     left: 35%;
   }
 
   @media (min-width: 1100px) and (max-width: 1294px) {
     display: block;
     width: 240px;
-    top: 68%;
+    top: 78%;
     left: 48%;
   }
 
@@ -202,6 +349,12 @@
 
   @media (min-width: 1440px) {
     display: block;
+    top: 78%;
+  }
+  @media (min-width: 1441px) {
+    display: block;
+    top: 72%;
+    left: 43%;
   }
 }
 
