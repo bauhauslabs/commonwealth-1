@@ -23,9 +23,9 @@ interface IAttrs {
 
 const initiateFullSearch = (searchTerm) => {
   if (
-    !searchTerm
-    || !searchTerm.toString().trim()
-    || !searchTerm.match(/[A-Za-z]+/)
+    !searchTerm ||
+    !searchTerm.toString().trim() ||
+    !searchTerm.match(/[A-Za-z]+/)
   ) {
     return;
   }
@@ -100,124 +100,159 @@ const TokensCommunityComponent: m.Component<IAttrs, IState> = {
       [
         m('div', { class: 'TokensCommunityContainer' }, [
           m('div', { class: 'TokensCommunityLeftContainer' }, [
-            m('div',
-              { class: 'flex items-center justify-center' }, [
-                m('div',
-                  { class: 'mt-32 mb-10 md:my-40 sm:px-8 md:px-8 lg:px-8 xl:px-16 px-8' },
+            m('div', { class: 'flex items-center justify-center' }, [
+              m('div', { class: 'TokensCommunityContentContainer' }, [
+                m(
+                  'h1',
+                  { class: 'text-4xl font-bold mb-5 leading-10 TokenCTitle' },
                   [
-                    m('h1', { class: 'text-4xl font-bold mb-5 leading-10' }, [
-                      'A ',
-                      m('span', {
-                        class: 'bg-clip-text text-transparent gradient-0'
-                      }, 'community'),
-                      ' for every token. ',
-                    ]),
-                    m('p', {
-                      class: 'text-xl text-gray-600 mb-5'
-                    }, [
-                      'Commonwealth is an all-in-one platform for on-chain communities to discuss, vote, and fund projects together.',
-                      ' Never miss an on-chain event, proposal, or important discussion again. '
-                    ]),
-                    m('.token-search-wrap', {
-                      autocomplete: 'off',
-                      class:
-                      'bg-white shadow-2xl rounded-xl p-2 flex flex-row justify-between mb-10 relative',
-                    }, [
-                      m(FindYourTokenInputComponent, {
-                        onchangeValue: (event: any) => {
-                          vnode.state.inputTokenValue = event.target.value;
-                          vnode.state.refilterResults = false;
-                          clearTimeout(vnode.state.inputTimeout);
-                          vnode.state.inputTimeout = setTimeout(() => {
-                            vnode.state.refilterResults = true;
-                            m.redraw();
-                          }, 200);
-                        },
-                        onkeyupValue: (event: any) => {
-                          if (event.key === 'Enter') {
-                            initiateFullSearch(event.target.value);
-                          }
+                    'A ',
+                    m(
+                      'span',
+                      {
+                        class: 'bg-clip-text text-transparent gradient-0',
+                      },
+                      'community'
+                    ),
+                    ' for every token. ',
+                  ]
+                ),
+
+                m(
+                  'p',
+                  {
+                    class: 'text-gray-600 TokenCommunityParagraph',
+                  },
+                  [
+                    'Commonwealth is an all-in-one platform for on-chain communities to discuss, vote, and fund projects. Never miss an interesting on-chain event or thread for your favorite projects.',
+                  ]
+                ),
+                m(
+                  '.token-search-wrap',
+                  {
+                    autocomplete: 'off',
+                    class:
+                      'bg-white shadow-2xl rounded-xl p-2 flex flex-row justify-between my-5 relative TokenCommunitySearch',
+                  },
+                  [
+                    m(FindYourTokenInputComponent, {
+                      onchangeValue: (event: any) => {
+                        vnode.state.inputTokenValue = event.target.value;
+                        vnode.state.refilterResults = false;
+                        clearTimeout(vnode.state.inputTimeout);
+                        vnode.state.inputTimeout = setTimeout(() => {
+                          vnode.state.refilterResults = true;
+                          m.redraw();
+                        }, 200);
+                      },
+                      onkeyupValue: (event: any) => {
+                        if (event.key === 'Enter') {
+                          initiateFullSearch(event.target.value);
                         }
-                      }),
-                      vnode.state.inputTokenValue
-                    && vnode.state.inputTokenValue.length > 2
-                    && m(InputTokensListComponent, {
-                      optionList: vnode.state.chainsAndTokens,
-                      inputValue: vnode.state.inputTokenValue,
-                      maxOptions: 20,
-                      stillLoadingTokens,
-                      refilterResults: vnode.state.refilterResults,
+                      },
                     }),
-                      m('button', {
+                    vnode.state.inputTokenValue &&
+                      vnode.state.inputTokenValue.length > 2 &&
+                      m(InputTokensListComponent, {
+                        optionList: vnode.state.chainsAndTokens,
+                        inputValue: vnode.state.inputTokenValue,
+                        maxOptions: 20,
+                        stillLoadingTokens,
+                        refilterResults: vnode.state.refilterResults,
+                      }),
+                    m(
+                      'button',
+                      {
                         type: 'button',
-                        class: 'btn-primary text-xl font-medium rounded-lg pb-2 pt-3 px-3 w-36',
-                        onclick: () => { initiateFullSearch(vnode.state.inputTokenValue); }
-                      }, [
+                        class:
+                          'btn-primary text-xl font-medium rounded-lg pb-2 pt-3 px-3 w-36 TokenCommunityGoButton',
+                        onclick: () => {
+                          initiateFullSearch(vnode.state.inputTokenValue);
+                        },
+                      },
+                      [
+                        ' Go ',
+                        m('img', {
+                          class: 'inline ml-1.5',
+                          src: 'static/img/arrow-right.svg',
+                          alt: 'Go',
+                        }),
+                      ]
+                    ),
+                    m(
+                      'button',
+                      {
+                        type: 'button',
+                        class:
+                          'btn-primary text-xl font-medium rounded-lg pb-2 pt-3 px-3 w-36 TokenCommunityLetGoButton',
+                        onclick: () => {
+                          initiateFullSearch(vnode.state.inputTokenValue);
+                        },
+                      },
+                      [
                         " Let's Go ",
                         m('img', {
                           class: 'inline ml-1.5',
                           src: 'static/img/arrow-right.svg',
                           alt: "Let's Go",
                         }),
-                      ]),
-                    ]),
-                    m('div', { class: 'flex justify-center ' }, [
-                      m('h1', { class: 'font-bold mb-5 leading-10 md:text-xl lg:text-2xl xl:text-4xl' }, [
-                        'We’re also here'
-                      ]),
-                      m('div', { class: 'block flex' }, [
-                        m(
-                          'a',
-                          {
-                            class: 'ml-4',
-                            href: 'https://discord.gg/yK3x5HcsXG',
-                            target: '_blank'
-                          },
-                          [
-                            m('img', {
-                              class: 'inline mr-1.5 h-8 w-8',
-                              src: 'static/img/discordIcon.svg',
-                              alt: 'Discord',
-                            })
-                          ]
-                        ),
-                        m(
-                          'a',
-                          {
-                            class: 'mx-3 lg:mx-3',
-                            href: 'https://t.me/HiCommonwealth',
-                            target: '_blank'
-                          },
-                          [
-                            m('img', {
-                              class: 'inline mr-1.5 h-8 w-8',
-                              src: 'static/img/telegramIcon.svg',
-                              alt: 'Telegram',
-                            })
-                          ]
-                        ),
-                        m(
-                          'a',
-                          {
-                            class: 'lg:mx-3',
-                            href: 'https://twitter.com/hicommonwealth',
-                            target: '_blank'
-                          },
-                          [
-                            m('img', {
-                              class: 'inline mr-1.5 h-8 w-8',
-                              src: 'static/img/twitterIcon.svg',
-                              alt: 'Twitter',
-                            })
-                          ]
-                        )
-                      ])
+                      ]
+                    ),
+                  ]
+                ),
+                m('div', { class: 'TokenChannelContainer  mt-10' }, [
+                  m('div', { class: 'TokenChannelTitleContainer' }, [
+                    m('h1', { class: 'TokenChannelTitle' }, [
+                      'We’re also here',
                     ])
-                  ])
+                  ]),
+                  m('div', { class: 'TokenChannelIconsContainer' }, [
+                    m(
+                      'a',
+                      {
+                        href: 'https://discord.gg/yK3x5HcsXG',
+                        target: '_blank',
+                      },
+                      [
+                        m('img', {
+                          src: 'static/img/discordIcon.svg',
+                          alt: 'Discord',
+                        }),
+                      ]
+                    ),
+                    m(
+                      'a',
+                      {
+                        href: 'https://t.me/HiCommonwealth',
+                        target: '_blank',
+                      },
+                      [
+                        m('img', {
+                          class: 'mx-8',
+                          src: 'static/img/telegramIcon.svg',
+                          alt: 'Telegram',
+                        }),
+                      ]
+                    ),
+                    m(
+                      'a',
+                      {
+                        href: 'https://twitter.com/hicommonwealth',
+                        target: '_blank',
+                      },
+                      [
+                        m('img', {
+                          src: 'static/img/twitterIcon.svg',
+                          alt: 'Twitter',
+                        }),
+                      ]
+                    ),
+                  ]),
+                ]),
               ]),
+            ]),
           ]),
           m('div', { class: 'TokensCommunityRightContainer gradient-135' }, [
-
             m('div', { class: 'TokenDiscussionDesktopContainer ' }, [
               m('img', {
                 class: 'TokenDiscussionImage',
